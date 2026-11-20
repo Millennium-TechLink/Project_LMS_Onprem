@@ -205,21 +205,10 @@ if ($allChecksPass) {
     Write-Host "✗ Some checks failed" -ForegroundColor Red
     Write-Host ""
     Write-Host "Please resolve the issues above before running the application." -ForegroundColor Red
-    Write-Host "Refer to CUSTOMER_SETUP_GUIDE.md for detailed instructions." -ForegroundColor Red
+    Write-Host "Send the output above to your vendor if you need help." -ForegroundColor Red
 }
 
 Write-Host ""
 Write-Host "Log files location (if app was already run):" -ForegroundColor Cyan
 Write-Host "  $env:APPDATA\Lab Management System\logs\" -ForegroundColor Gray
 Write-Host ""
-
-# Offer to open setup guide
-$openGuide = Read-Host "Open CUSTOMER_SETUP_GUIDE.md? (Y/N)"
-if ($openGuide -eq "Y" -or $openGuide -eq "y") {
-    $guidePath = Join-Path $PSScriptRoot "CUSTOMER_SETUP_GUIDE.md"
-    if (Test-Path $guidePath) {
-        Start-Process notepad $guidePath
-    } else {
-        Write-Host "Setup guide not found at: $guidePath" -ForegroundColor Yellow
-    }
-}
