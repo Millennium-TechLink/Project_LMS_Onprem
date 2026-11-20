@@ -1,0 +1,20 @@
+{
+  "_comment": "What this on-prem product turns on (true) or off (false). Every feature in backend/app/core/features.py must be listed. One install can still override with FEATURE_FLAGS in its .env.",
+
+  "self_signup": false,
+  "password_reset_email": false,
+  "otp_login": false,
+  "mfa": false,
+  "dev_quick_login": false,
+  "marketing_pages": false,
+  "audits": false,
+  "lab_recommendations": false,
+  "lab_approvals": false,
+  "online_payment": false,
+  "crm_connectors": false,
+  "lab_onboarding": false,
+  "report_email": false,
+  "email_notifications": false,
+  "customer_portal": true,
+  "admin_password_reset": true
+}

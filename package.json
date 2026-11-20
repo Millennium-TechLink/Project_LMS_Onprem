@@ -1,0 +1,105 @@
+{
+  "name": "lab-management-system",
+  "private": true,
+  "version": "1.0.0",
+  "description": "AI-powered Digital Lab Management System for Millennium TechLink",
+  "author": "Millennium TechLink",
+  "main": "electron/main.js",
+  "scripts": {
+    "electron": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.techlink.lms",
+    "productName": "Lab Management System",
+    "compression": "store",
+    "directories": {
+      "output": "desktop-app-build"
+    },
+    "asar": true,
+    "afterPack": "electron/afterPack.js",
+    "files": [
+      "electron/**/*",
+      "!electron/tools/**",
+      "!electron/**/*.test.js",
+      "!electron/**/__tests__/**",
+      "package.json",
+      "!**/.env",
+      "!**/*.pem",
+      "!**/*.key",
+      "!**/*.p12",
+      "!**/*.pfx",
+      "!**/backend/.env"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend/app",
+        "to": "backend/app"
+      },
+      {
+        "from": "../backend/python",
+        "to": "backend/python",
+        "filter": [
+          "**/*",
+          "!Lib/site-packages/pip/**",
+          "!Lib/site-packages/pip-*/**",
+          "!Lib/site-packages/black/**",
+          "!Lib/site-packages/black-*/**",
+          "!Lib/site-packages/blackd/**",
+          "!Lib/site-packages/blib2to3/**",
+          "!Lib/site-packages/flake8/**",
+          "!Lib/site-packages/flake8-*/**",
+          "!Lib/site-packages/pathspec/**",
+          "!Lib/site-packages/pathspec-*/**",
+          "!Lib/site-packages/iniconfig/**",
+          "!Lib/site-packages/iniconfig-*/**",
+          "!Lib/site-packages/pytest_asyncio/**",
+          "!Lib/site-packages/pytest_asyncio-*/**",
+          "!Lib/site-packages/**/tests/**"
+        ]
+      },
+      {
+        "from": "config/.env.customer.example",
+        "to": "backend/.env.customer.example"
+      },
+      {
+        "from": "config/features.json",
+        "to": "backend/features.json"
+      },
+      {
+        "from": "../frontend/dist",
+        "to": "backend/frontend_dist"
+      },
+      {
+        "from": "../backend/db_migrations",
+        "to": "backend/db_migrations"
+      }
+    ],
+    "win": {
+      "target": {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    },
+    "nsis": {
+      "oneClick": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "differentialPackage": false
+    },
+    "publish": null,
+    "generateUpdatesFilesForAllChannels": false,
+    "buildDependenciesFromSource": false,
+    "npmRebuild": false
+  },
+  "devDependencies": {
+    "electron": "^43.4.1",
+    "electron-builder": "^26.15.3"
+  },
+  "allowScripts": {
+    "electron-winstaller@5.4.0": true
+  }
+}

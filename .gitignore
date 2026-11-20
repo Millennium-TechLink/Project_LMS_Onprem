@@ -1,0 +1,22 @@
+# Dependencies and build output
+node_modules/
+build-cache/
+desktop-app-build/
+
+# Licensing: private keys, issued licenses and the customer ledger never go in git
+electron/tools/vendor-data/
+electron/tools/*.pem
+electron/tools/license-ledger.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.lic
+*.sha256
+
+# Real configuration (the template config/.env.customer.example is tracked)
+.env
+.env.bake
+
+# Diagnostics bundles from testing
+lms-diagnostics-*.zip
